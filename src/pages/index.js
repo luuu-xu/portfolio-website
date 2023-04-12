@@ -1,9 +1,6 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
 import Image from 'next/image'
-import Avatar from '../images/Avatar.jpg'
-import GithubIcon from '../images/GithubIcon.png'
 import Link from 'next/link'
 import ContactButtons from '@/components/contactButtons'
 
@@ -21,18 +18,18 @@ export default function Home() {
       <article className='prose px-2 py-4 md:py-0 dark:prose-invert'>
         <div className='flex flex-row items-center gap-4'>
           <Image 
-            src={Avatar}
+            src="/Avatar.jpg"
             className='rounded-full my-0'
             alt="Picture of Chensheng Xu"
             width={100}
             height={100}
-            placeholder='blur'
+            // placeholder='blur'
           />
           <div className='flex flex-col'>
             <h1 className='font-medium my-2'>Chensheng Xu</h1>
             <Link href="http://github.com/luuu-xu" className='flex items-center gap-2'>
               <Image 
-                src={GithubIcon}
+                src="/GithubIcon.png"
                 className='my-0 dark:invert'
                 alt="Github Icon"
                 width={20}

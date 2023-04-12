@@ -1,5 +1,4 @@
 import SideBar from "./sidebar";
-import Link from "next/link";
 
 export default function Layout({ children }) {
   return (

@@ -1,6 +1,3 @@
-import GithubIcon from '../images/GithubIcon.png'
-import LinkedIcon from '../images/LinkedinIcon.png'
-import EmailIcon from '../images/EmailIcon.png'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -13,7 +10,7 @@ export default function ContactButtons() {
       >
         <div className='flex flex-row items-center gap-2'>
           <Image 
-            src={GithubIcon}
+            src="/GithubIcon.png"
             className='my-0 dark:invert'
             alt="Github Icon"
             width={20}
@@ -31,7 +28,7 @@ export default function ContactButtons() {
       >
         <div className='flex flex-row items-center gap-2'>
           <Image 
-            src={LinkedIcon}
+            src="/LinkedinIcon.png"
             className='my-0 dark:invert'
             alt="LinkedIn Icon"
             width={20}
@@ -49,7 +46,7 @@ export default function ContactButtons() {
       >
         <div className='flex flex-row items-center gap-2'>
           <Image 
-            src={EmailIcon}
+            src="/EmailIcon.png"
             className='my-0 dark:invert'
             alt="LinkedIn Icon"
             width={20}
