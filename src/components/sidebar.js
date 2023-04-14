@@ -12,6 +12,9 @@ const navLinks = {
   "/projects": {
     name: "projects",
   },
+  "/blog": {
+    name: "blog",
+  },
   "/contact": {
     name: "contact",
   },

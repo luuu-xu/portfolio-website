@@ -46,7 +46,7 @@ export default function ProjectsPage() {
         <hr className="my-4 dark:border-gray-200" />
         <ul className="list-none pl-0">
         {projectsData.map((project) => (
-          <li key={project.title} className="">
+          <li key={project.title} className="pl-0">
             <Link href={project.live_url} className="no-underline">
               <h3>{project.title}</h3>
             </Link>
