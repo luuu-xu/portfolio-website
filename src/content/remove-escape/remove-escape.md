@@ -3,7 +3,7 @@ title: The Decision not to Sanitize User Inputs
 publishedAt: 2022-4-13
 ---
 
-I was checking my [Odinbook](https://odinbook-client-production-9219.up.railway.app/) (Facebook-clone) website after deployment where some posts and comments made from nice fellows on [The Odin Project](https://www.theodinproject.com), I found an error in one post content:
+I was checking my [Odinbook](https://odinbook-client-production-9219.up.railway.app/) (Facebook-clone) website after deployment, where some posts and comments were made by nice fellow users on [The Odin Project](https://www.theodinproject.com), I found an error in one post content:
 
 ![&#x27; error](../blogImages/remove-escape/user_post_escape_error.png)
 
@@ -11,7 +11,7 @@ Quickly I realized the `&#x27;` is essentially `'` character, which was escaped 
 
 The function in questioning is [`escape(input)`](https://github.com/validatorjs/validator.js#sanitizers#escape), from the documentation, it replace **<, >, &, ', " and /** with HTML entities.
 
-Reminding of myself, I used `escape()` to sanitize the user input because I was trying to prevent **cross-site-scripting (XSS)** attacks. The idea of XSS attack sounded pretty serious to me at the time of introduction, later I would sanitize user inputs in every Node.js back-end controllers. 
+Reminding of myself, I used `escape()` to sanitize the user input because I was trying to prevent **cross-site-scripting (XSS)** attacks. The idea of an XSS attack sounded pretty serious to me at the time of introduction, later I would sanitize user inputs in every Node.js back-end controllers. 
 
 An example of XSS attack would look like:
 1. App allows user to input post content which would be displayed after submitting.
@@ -20,7 +20,7 @@ An example of XSS attack would look like:
 
 By escaping such user inputs first, then storing into database (my choice being MongoDB), I had the idea that it was successfully preventing XSS attacks. That's up until Visitor-67's asking for a partner for JavaScript30 course post came along.
 
-Now I had solutions in mind, maybe I could unescape characters other than `<>` on front-end? But what if an user is trying to post some content about HTML where `<>` are needed? What about not escaping user inputs at all? But what if some nasty attacks actually gets stored and rendered on my website?
+Now I had solutions in mind, maybe I could unescape characters other than `<>` on front-end? But what if a user is trying to post some content about HTML where `<>` are needed? What about not escaping user inputs at all? But what if some nasty attacks actually gets stored and rendered on my website?
 
 Just when I was researching on this topic, a post by Ben Hoyt came along, [Don’t try to sanitize input. Escape output.](https://benhoyt.com/writings/dont-sanitize-do-escape/). The post made sense to me about the idea of "escaping output instead" especially with the quote:
 
