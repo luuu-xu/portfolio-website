@@ -5,7 +5,7 @@ publishedAt: 2022-4-13
 
 I was checking my [Odinbook](https://odinbook-client-production-9219.up.railway.app/) (Facebook-clone) website after deployment, where some posts and comments were made by nice fellow users on [The Odin Project](https://www.theodinproject.com), I found an error in one post content:
 
-![&#x27; error](../blogImages/remove-escape/user_post_escape_error.png)
+![&#x27; error](/blogImages/remove-escape/user_post_escape_error.png)
 
 Quickly I realized the `&#x27;` is essentially `'` character, which was escaped by [express-validator](https://express-validator.github.io/docs) in my Node.js middleware that was validating and sanitizing user inputs.
 
@@ -35,7 +35,7 @@ But the researches brought another issue to my attention, which was **NoSQL inje
 An example of MongoDB injection would look like:
 
 1. When user is logging in, the controller would do something like this:
-  ```
+  ```js
   db.users.find({
     username: req.body.username,
     password: req.body.password

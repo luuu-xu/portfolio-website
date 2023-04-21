@@ -48,13 +48,13 @@ export default function Home() {
           From custom-made leather <a href='http://xuleathers.com'>products</a> to full-stack <a href='https://odinbook-client-production-9219.up.railway.app/'>websites</a>.
         </p>
         <p>
-          I always have the urge to learn and create, now I am eager to work and contribute to the exciting dynamic world of web development and software engineering.
+          I always have the urge to learn and create, now I am eager to work and contribute to the exciting dynamic world of web development and <b>software engineering</b>.
         </p>
-        {/* <hr className="my-4 dark:border-gray-200" />
+        <hr className="my-4 dark:border-gray-200" />
         <p>
-          Here is my <a href="/Chensheng-Xu-Resume.pdf" download>resume</a>{" (PDF, 75Kb)."}
+          I love to read, from Chinese literacy to political philosophy, anthropology and history to science fictions. I would read about 50 books a year.
+          Although I don't write a lot previously, I plan to start writing more in the <a href='/blog'>blog</a> section of this website.
         </p>
-        <hr className="my-4 dark:border-gray-200" /> */}
         <ContactButtons />
       </article>
     </>

@@ -22,7 +22,7 @@ export default function AboutPage() {
         <p>
           My journey of learning web-development started out of interests and <b>curiosity</b> in 2022.
           While building websites and webshops for my business using Saas, I became curious and interested in how websites are developed.
-          I began learning full-stack JaveScript and various frameworks on the side with an open-source curriculum called <a href="https://www.theodinproject.com">The Odin Project</a>, 
+          I began learning full-stack JavaScript and various frameworks on the side with an open-source curriculum called <a href="https://www.theodinproject.com">The Odin Project</a>, 
           including HTML/CSS, JavaScript, and React.js, etc,
           and have since implemented these technologies in a number of personal projects.
         </p>
@@ -41,6 +41,12 @@ export default function AboutPage() {
         <hr className="my-4 dark:border-gray-200" />
         <p>
           Here is a copy of my <a href="/Chensheng-Xu-Resume.pdf" download>resume</a>{". (PDF, 75Kb)"}
+        </p>
+        <hr className="my-4 dark:border-gray-200" />
+        <p>
+          Sports and <b>nature</b> are my interests too. I love to hike in nature and explore the landscape and beautiful wildlife (sadly Toronto does not have a lot of amazing hiking sites).
+          I am a certified PADI Divemaster and I absolutely love the amazingly diversified sea life. 
+          For the past year I have been playing Badminton at out local community center, coaching my partner and I am proud that now she plays much better than she initially started.
         </p>
       </article>
     </>

@@ -15,4 +15,4 @@ Here is a list:
 const md = markdown;
 ```
 
-![my github avatar](../blogImages/test-md/github-avatar.jpeg)
+![my github avatar](/blogImages/test-md/github-avatar.jpeg)
