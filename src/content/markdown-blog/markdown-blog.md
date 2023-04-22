@@ -3,6 +3,8 @@ title: How to Add Markdown Blog Feature to Your Next.js Website
 publishedAt: 2022-4-21
 ---
 
+![A typewriter](/blogImages/markdown-blog/laura-chouette-6tdfx_gvHf0-unsplash.jpg)
+
 In this blog post I am going to show you how I implemented this [Markdown blog](/blog) feature on my Next.js portfolio website. This is going to be my first "tutorial-like" blog, hopefully this will make sense to anybody reading it and I am going to try my best.
 
 I am going to skip the introduction why you need a markdown blog feature on your website (since you are reading this), I am assuming you want it. And I am going to show you a list of what this markdown blog feature does and why it is worthy recommending.
@@ -17,7 +19,7 @@ I am going to skip the introduction why you need a markdown blog feature on your
 
 Assuming you already have your portfolio website built with Next.js, the structure relating to this blog feature would look like: 
 
-```js
+```markdown
 src
 ├── content
 │   ├── test-md
@@ -48,7 +50,7 @@ Below we have `/lib/blogmd.js` which contains some helper functions that reads a
 
 If you are new to markdown, take a look at the [Markdown Guide](https://www.markdownguide.org). And maybe open the [Cheat Sheet](https://www.markdownguide.org/cheat-sheet/) on the side when you are writing in .md just as I am doing now.
 
-```md
+```markdown
 ---
 title: 'The First Test Blog in Markdown'
 publishedAt: 2022-4-12
@@ -65,7 +67,7 @@ Here is a list:
 
 2. In order to read the markdown files, we need to update the `next.config.js` to include .md files:
 
-```js
+```jsx
 // next.config.js
 
 /** @type {import('next').NextConfig} */
@@ -84,13 +86,13 @@ Now it is the time to create the Blog Index Page and slug pages for each blog ma
 
 1. Go ahead and install gray-matter:
 
-```js
+```jsx
 npm install gray-matter
 ```
 
 2. Create the `/lib/blogmd.js` file and add some of our helper functions:
 
-```js
+```jsx
 const fs = require("fs");
 const path = require("path");
 const matter = require('gray-matter');
@@ -119,7 +121,7 @@ Notice `process.cwd()` returns the [current working folder](https://nodejs.org/a
 
 3. To process the markdown file data, we will now add this function to `/lib/blogmd.js`:
 
-```js
+```jsx
 // Get a single blog from the content folder with the given slug
 export function getSingleBlog(slug, contentFolder) {
   const source = getFileContent(slug, contentFolder);
@@ -138,7 +140,7 @@ This function uses `matter(source)` to parse the data and return an object inclu
 
 4. Then we add another function to read and return an array of blogs data:
 
-```js
+```jsx
 // Get all blogs from the content folder
 export function getAllBlogs(contentFolder) {
   const BLOGS_DIRS_PATH = getPath(contentFolder);
@@ -177,7 +179,7 @@ We are going to use [Static Site Generation](https://nextjs.org/docs/basic-featu
 
 1. Go ahead and create `src/pages/blog/index.js` for the blog index page.
 
-```js
+```jsx
 import { getAllBlogs } from "@/lib/blogmd";
 
 export async function getStaticProps() {
@@ -201,7 +203,7 @@ Inside `getStaticProps()` function, we will call our helper function `getAllBlog
 
 2. Then we need to write the main function for our index page:
 
-```js
+```jsx
 import Link from "next/link";
 
 export default function BlogPage({ blogs }) {
@@ -231,7 +233,7 @@ Since we have the blog index page to redirect to each blog post, now we need to 
 
 1. Create `src/pages/blog/[slug].js` and add the following functions:
 
-```js
+```jsx
 import { getAllBlogs, getSingleBlog } from '@/lib/blogmd';
 
 export async function getStaticPaths() {
@@ -265,13 +267,13 @@ For someone with Next.js experience, this would be easy to understand.
 
 2. Now we need to install [react-markdown](https://github.com/remarkjs/react-markdown), to take a string of markdown and it’ll safely render to React elements. The benefits are in their documentation and you can read about it too.
 
-```js
+```jsx
 npm install react-markdown
 ```
 
 3. Then let's write our Blog page function, don't forget to import `ReactMarkdown` too.
 
-```js
+```jsx
 export default function Blog({ blog }) {
   return (
     <article>
@@ -285,7 +287,7 @@ export default function Blog({ blog }) {
 
 Again a simple function to understand, this `<article>` will include our title, published date and the main content which is rendered by `<ReactMarkdown>`. Just to recall, in our `getSingleBlog()` helper function, it will return these data after parsing with [gray-matter](https://github.com/jonschlinkert/gray-matter), which we used in the blog function.
 
-```js
+```jsx
 export function getSingleBlog(slug, contentFolder) {
   const source = getFileContent(slug, contentFolder);
   const { data, content } = matter(source);
@@ -310,7 +312,7 @@ Give their documentations a read and have a try. It looks nice and you can add [
 
 Adding images in markdown file is easy, just like so:
 
-```md
+```markdown
 ![test-png](/blogImages/test-md/test-png.png)
 ```
 
@@ -322,7 +324,7 @@ Therefore let's write a Node.js script that is going to automatically copy our i
 
 1. Go ahead and create `src/bin/copy-images.mjs`, and add the following functions:
 
-```js
+```jsx
 import fs from 'fs';
 import path from 'path';
 import fsExtra from 'fs-extra';
@@ -375,7 +377,7 @@ The functions in this script are basically reading allowed files (png, jpg, jpeg
 
 2. Then update your `package.json` so the script runs during the [pre-build](https://docs.npmjs.com/cli/v9/using-npm/scripts#pre--post-scripts) stage:
 
-```json
+```jsxon
 "scripts": {
   "copyimages": "node ./src/bin/copy-images.mjs",
   "prebuild": "npm run copyimages",
@@ -403,3 +405,5 @@ This blog post is also published on Medium [here](https://luuu-xu.medium.com/how
 [How to Add Markdown Blog Feature to Your Next.js Website](https://luuu-xu.medium.com/how-to-add-markdown-blog-feature-to-your-next-js-website-c036ad4d17d7)
 
 During my self-learning journey of programming, I have read a ton of Medium articles and they all more or less helped me. These posts are actually the most important force pushing me writing this blog and I appreciate them a lot!
+
+Photo by [Laura Chouette](https://unsplash.com/@laurachouette?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/6tdfx_gvHf0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
