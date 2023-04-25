@@ -21,14 +21,14 @@ const projectsData = [
     description: "A front-end mock-up app of Tock, back-end on Firebase and Authentication by Firebase.",
     stack: ["React", "Firebase", "JavaScript", "HTML", "CSS"],
     repo_url: "https://github.com/luuu-xu/toock",
-    live_url: "toock-32270.firebaseapp.com",
+    live_url: "https://toock-32270.firebaseapp.com",
   },
   {
     title: "Find-kirby",
     description: "A front-end photo-tagging app to find Kirby! Back-end on Firebase.",
     stack: ["React", "Firebase", "JavaScript", "HTML", "CSS"],
     repo_url: "https://github.com/luuu-xu/find-kirby",
-    live_url: "findkirby-87467.web.app",
+    live_url: "https://findkirby-87467.web.app",
   }
 ]
 
