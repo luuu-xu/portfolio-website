@@ -10,6 +10,13 @@ const projectsData = [
     live_url: "https://odinbook-client-production-9219.up.railway.app",
   },
   {
+    title: "Risk Visualizer",
+    description: "Front-end data visualization website with interactive Google Maps, Chart and Table, developed with Next13.",
+    stack: ["Next13", "React", "Google Maps SDK", "React Table", "Chart.js", "Tailwind", "Bootstrap"],
+    repo_url: "https://github.com/luuu-xu/risk-viz",
+    live_url: "https://risk-viz-inky.vercel.app",
+  },
+  {
     title: "Blog API + Client + CMS",
     description: "Full-stack MERN Blog app with RESTful API, client-side website on Next.js and CMS on React.",
     stack: ["React", "Next.js", "TypeScript", "MongoDB", "Node", "Express", "JWT", "Passport.js", "Jest", "Bootstrap"],
