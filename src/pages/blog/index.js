@@ -4,18 +4,22 @@ import Link from "next/link";
 
 export async function getStaticProps() {
   const blogs = getAllBlogs('src/content');
-  blogs.sort((a, b) => {
-    if ((new Date(a.meta.publishedAt)) > new Date(b.meta.publishedAt)) {
-      return -1;
-    }
-    return 1;
-  });
+  sortBlogsByDateNewestFirst(blogs);
 
   return {
     props: {
       blogs: blogs,
     }
   }
+}
+
+function sortBlogsByDateNewestFirst(blogs) {
+  return blogs.sort((a, b) => {
+    if ((new Date(a.meta.publishedAt)) > new Date(b.meta.publishedAt)) {
+      return -1;
+    }
+    return 1;
+  });
 }
 
 export default function BlogPage({ blogs }) {
@@ -30,17 +34,29 @@ export default function BlogPage({ blogs }) {
           Actually I just started writing blogs after this page was created...
         </p>
         <hr className="my-4 dark:border-gray-200" />
-        <ul className="list-none pl-0">
-          {blogs.map((blog) => (
-            <li className="pl-0" key={blog.slug}>
-              <Link className="no-underline" href={`/blog/${blog.slug}`}>
-                <h2 className="text-base font-normal my-2 mb-0">{blog.meta.title}</h2>
-                <span className="text-sm text-neutral-500">{blog.meta.publishedAt}</span>
-              </Link>
-          </li>
-          ))}
-        </ul>
+        <BlogList blogs={blogs} />
       </article>
     </>
+  );
+}
+
+function BlogList({ blogs }) {
+  return (
+    <ul className="list-none pl-0">
+      {blogs.map((blog) => (
+        <BlogListItem key={blog.slug} blog={blog} />
+      ))}
+    </ul>
+  );
+}
+
+function BlogListItem({ blog }) {
+  return (
+    <li className="pl-0" key={blog.slug}>
+      <Link className="no-underline my-0" href={`/blog/${blog.slug}`}>
+        <h2 className="text-base font-normal my-2 mb-0">{blog.meta.title}</h2>
+        <span className="text-sm text-neutral-500 dark:text-neutral-400">{blog.meta.publishedAt}</span>
+      </Link>
+    </li>
   );
 }

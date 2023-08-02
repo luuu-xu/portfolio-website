@@ -10,9 +10,6 @@ export default function Layout({ children }) {
         <SideBar />
         <main className="w-full">{children}</main>
       </div>
-      {/* <footer className="flex justify-center">
-        Made by <Link href='https://github.com/luuu-xu'>luuu-xu</Link>
-      </footer> */}
     </>
   );
 }
