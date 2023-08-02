@@ -1,5 +1,5 @@
 import Head from "next/head";
-import ContactButtons from "@/components/contactButtons";
+import ContactButtonsContainer from "@/components/contactButtonsContainer";
 
 export default function ContactPage() {
   return (
@@ -16,7 +16,7 @@ export default function ContactPage() {
         <p>
           Here is a copy of my <a href="/Chensheng-Xu-Resume.pdf" download>resume</a>{". (PDF, 75Kb)"}
         </p>
-        <ContactButtons />
+        <ContactButtonsContainer />
       </article> 
     </>
   );

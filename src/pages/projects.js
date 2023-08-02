@@ -12,7 +12,7 @@ const projectsData = [
   {
     title: "Risk Visualizer",
     description: "Front-end data visualization website with interactive Google Maps, Chart and Table, developed with Next13.",
-    stack: ["Next13", "React", "Google Maps SDK", "React Table", "Chart.js", "Tailwind", "Bootstrap"],
+    stack: ["Next13", "React", "Redux", "Google Maps SDK", "React Table", "Chart.js", "Tailwind", "Bootstrap"],
     repo_url: "https://github.com/luuu-xu/risk-viz",
     live_url: "https://risk-viz-inky.vercel.app",
   },
@@ -51,48 +51,68 @@ export default function ProjectsPage() {
           Here are some of my full-stack JavaScript projects
         </p>
         <hr className="my-4 dark:border-gray-200" />
-        <ul className="list-none pl-0">
-        {projectsData.map((project) => (
-          <li key={project.title} className="pl-0">
-            <Link href={project.live_url} className="no-underline">
-              <h3>{project.title}</h3>
-            </Link>
-            <p>{project.description}</p>
-            <p>{project.stack.join(` | `)}</p>
-            <div className="flex gap-2">
-              {project.live_url && 
-              <Link href={project.live_url} 
-                className="flex items-center justify-between md:gap-8 border rounded-lg p-2 w-full md:w-auto font-normal 
-                hover:bg-neutral-100 no-underline dark:hover:bg-neutral-800 dark:border-neutral-700"
-              >
-                <span className="ml-2">Live</span>
-                <span className="material-symbols-outlined">
-                  arrow_outward
-                </span>
-              </Link>}
-              {project.repo_url &&
-              <Link href={project.repo_url} 
-                className="flex items-center justify-between md:gap-8 border rounded-lg p-2 w-full md:w-auto font-normal 
-                hover:bg-neutral-100 no-underline dark:hover:bg-neutral-800 dark:border-neutral-700"
-              >
-                <span className="ml-2">Repo</span>
-                <span className="material-symbols-outlined">
-                  arrow_outward
-                </span>
-              </Link>}
-            </div>
-          </li>
-        ))}
-      </ul> 
+        <ProjectsList />
       </article>
-      {/* <article className="prose px-2 py-2">
-        <h1 className="font-medium my-2">Skills</h1>
-        <p>Some technical skills I use for my projects</p>
-        <hr className="my-4 dark:border-gray-200" />
-        <ul className="list-none pl-0">
-
-        </ul>
-      </article> */}
     </>
+  );
+}
+
+function ProjectsList() {
+  return (
+    <ul className="list-none pl-0">
+      {projectsData.map((project) => (
+        <ProjectsListItem key={project.title} project={project} />
+      ))}
+    </ul>
+  );
+}
+
+function ProjectsListItem({ project }) {
+  return (
+    <li key={project.title} className="pl-0">
+      <ProjectsListItemText project={project} />
+      <ProjectsListItemURLContainer project={project} />
+    </li>
+  );
+}
+
+function ProjectsListItemText({ project }) {
+  return (
+    <>
+      <Link href={project.live_url} className="no-underline">
+        <h3 className="my-0">{project.title}</h3>
+      </Link>
+      <p>{project.description}</p>
+      <p>{project.stack.join(` | `)}</p>
+    </>
+  );
+}
+
+function ProjectsListItemURLContainer({ project }) {
+  return (
+    <div className="flex gap-2">
+      {project.live_url && 
+        <ProjectsListItemURL url={project.live_url} text="Live" />
+      }
+      {project.repo_url &&
+        <ProjectsListItemURL url={project.repo_url} text="Repo" />
+      }
+    </div>
+  );
+}
+
+function ProjectsListItemURL({ url, text }) {
+  return (
+    <Link href={url} 
+      className="flex items-center justify-between md:gap-8 border rounded-lg p-2 w-full md:w-auto font-normal 
+      hover:bg-neutral-100 no-underline dark:hover:bg-neutral-800 dark:border-neutral-700"
+    >
+      <span className="ml-2">
+        {text}
+      </span>
+      <span className="material-symbols-outlined">
+        arrow_outward
+      </span>
+    </Link>
   );
 }
