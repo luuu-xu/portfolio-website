@@ -84,6 +84,9 @@ function BlogArticleMain({ content }) {
         },
         img({node, ...props}) {
           return <img {...props} className='mx-auto' />
+        },
+        hr() {
+          return <hr className='my-6' />
         }
       }}
     >
