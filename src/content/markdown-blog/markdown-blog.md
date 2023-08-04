@@ -1,6 +1,6 @@
 ---
 title: How to Add Markdown Blog Feature to Your Next.js Website
-publishedAt: 2022-4-21
+publishedAt: 2023-4-21
 ---
 
 ![A typewriter](/blogImages/markdown-blog/laura-chouette-6tdfx_gvHf0-unsplash.jpg)
