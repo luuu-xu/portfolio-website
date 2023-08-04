@@ -81,6 +81,9 @@ function BlogArticleMain({ content }) {
               {children}
             </code>
           )
+        },
+        img({node, ...props}) {
+          return <img {...props} className='mx-auto' />
         }
       }}
     >
