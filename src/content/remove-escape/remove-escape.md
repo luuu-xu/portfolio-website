@@ -1,6 +1,6 @@
 ---
 title: The Decision not to Sanitize User Inputs
-publishedAt: 2022-4-13
+publishedAt: 2023-4-13
 ---
 
 I was checking my [Odinbook](https://odinbook-client-production-9219.up.railway.app/) (Facebook-clone) website after deployment, where some posts and comments were made by nice fellow users on [The Odin Project](https://www.theodinproject.com), I found an error in one post content:
