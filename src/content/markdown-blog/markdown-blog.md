@@ -396,14 +396,20 @@ I am sure there are a lot of ways of implementing a Markdown blog feature in you
 
 Hopefully you learned something from this blog, written in Markdown. 😎
 
+---
+
 Possible updates:
 - Adding [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) for code block styles.
 - Creating a repo of a template of this blog so it can work right off the start.
+
+---
 
 This blog post is also published on Medium [here](https://luuu-xu.medium.com/how-to-add-markdown-blog-feature-to-your-next-js-website-c036ad4d17d7). 
 
 [How to Add Markdown Blog Feature to Your Next.js Website](https://luuu-xu.medium.com/how-to-add-markdown-blog-feature-to-your-next-js-website-c036ad4d17d7)
 
 During my self-learning journey of programming, I have read a ton of Medium articles and they all more or less helped me. These posts are actually the most important force pushing me writing this blog and I appreciate them a lot!
+
+---
 
 Photo by [Laura Chouette](https://unsplash.com/@laurachouette?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/6tdfx_gvHf0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
