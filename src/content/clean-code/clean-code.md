@@ -1,6 +1,6 @@
 ---
 title: Clean Code and Leather-working
-publishedAt: 2023-8-3
+publishedAt: 2023.08.03
 ---
 
 ![Wtfs per minute](/blogImages/clean-code/wtfs-per-minute.png)
