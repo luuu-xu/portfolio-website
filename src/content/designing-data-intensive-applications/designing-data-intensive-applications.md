@@ -1,6 +1,6 @@
 ---
 title: Designing Data-Intensive Applications Reading Notes (continuing...)
-publishedAt: 2023-8-11
+publishedAt: 2023.08.11
 ---
 
 ![Book Cover](/blogImages/designing-data-intensive-applications/book-cover.jpg)
