@@ -2,7 +2,8 @@ import { getAllBlogs, getSingleBlog } from '@/lib/blogmd';
 import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import rehypeRaw from 'rehype-raw';
 
 export async function getStaticPaths() {
   const blogs = getAllBlogs('src/content');
@@ -89,6 +90,7 @@ function BlogArticleMain({ content }) {
           return <hr className='my-6' />
         }
       }}
+      rehypePlugins={[rehypeRaw]}
     >
       {content}
     </ReactMarkdown>

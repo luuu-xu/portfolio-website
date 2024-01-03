@@ -3,15 +3,23 @@ title: Implementing Boids Algorithm on Canvas
 publishedAt: 2023.12.28
 ---
 
-![Implementation Screenshot](/blogImages/boids-on-canvas/implementation-screenshot.png)
+<!-- ![Implementation Screenshot](/blogImages/boids-on-canvas/implementation-screenshot.png) -->
 
 Whenever I see a flock of birds roaming in the sky, I will stare and admire them for several seconds. My favorite thing to do while scuba diving is to swim along or stay inside a huge school of fishes and watch them swim around me. There is something mesmerizing about the movements, not only as an individual bird but also as an entire group. 
 
 When I heard about a simple algorithm that only uses 3 factors to simulate the movements of flocks, it had my interests and I started writing an implementation of it.
 
-It is [live here](https://luuu-xu.github.io/boids-canvas/), go ahead and play around with it. 
+It is [live here](https://luuu-xu.github.io/boids-canvas/) and as an iframe element below, go ahead and play around with it. 
 
 If you are interested in the code, its GitHub repo is [here](https://github.com/luuu-xu/boids-canvas).
+
+<iframe
+  title="Live Example of Boids on Canvas"
+  width="100%"
+  height="500px"
+  loading="lazy"
+  src="https://luuu-xu.github.io/boids-canvas/">
+</iframe>
 
 ## Boids Algorithm
 
