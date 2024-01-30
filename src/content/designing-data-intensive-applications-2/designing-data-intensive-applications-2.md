@@ -3,7 +3,7 @@ title: Designing Data-Intensive Applications - 2. Distributed Data
 publishedAt: 2024.01.18
 ---
 
-![Book Cover](/blogImages/designing-data-intensive-applications/book-cover.jpg)
+![Book Cover](/blogImages/designing-data-intensive-applications-2/book-cover.jpg)
 
 Finishing [first part of the book](designing-data-intensive-applications-1), we move up from single machine to distributed machines, the benefits of distributed storage are: **Scalability**, **Fault Tolerance** and **Latency**.
 

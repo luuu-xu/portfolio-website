@@ -3,7 +3,7 @@ title: Designing Data-Intensive Applications - 1. Foundations of Data Systems
 publishedAt: 2023.08.11
 ---
 
-![Book Cover](/blogImages/designing-data-intensive-applications/book-cover.jpg)
+![Book Cover](/blogImages/designing-data-intensive-applications-1/book-cover.jpg)
 
 To be honest, I do not enjoy taking down reading notes, except occasionally highlighting on my Kindle for some great paragraphs. But when I opened [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/) and saw the estimated reading time being **25 hours**, I said to myself, "Maybe I should make reading notes along the way to make these 25 hours really worth it." 
 
