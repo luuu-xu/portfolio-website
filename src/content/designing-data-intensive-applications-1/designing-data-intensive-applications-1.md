@@ -1,5 +1,5 @@
 ---
-title: Designing Data-Intensive Applications Reading Notes (continuing...)
+title: Designing Data-Intensive Applications - 1. Foundations of Data Systems
 publishedAt: 2023.08.11
 ---
 
@@ -7,7 +7,9 @@ publishedAt: 2023.08.11
 
 To be honest, I do not enjoy taking down reading notes, except occasionally highlighting on my Kindle for some great paragraphs. But when I opened [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/) and saw the estimated reading time being **25 hours**, I said to myself, "Maybe I should make reading notes along the way to make these 25 hours really worth it." 
 
-So this blog is going to be the place where I summarize this book by chapters, the points will be what strikes me as "worth highlighting", thus it won't be a full summarization of this book at all. 
+So this blog is going to be the place where I summarize this book by chapters, the points will be what strikes me as "worth highlighting", thus it won't be a full summarization of this book at all.
+
+***
 
 ## Chapter 1. Reliable, Scalable, and Maintainable Applications
 
@@ -41,6 +43,8 @@ Three most important concerns in most software systems:
 
 - Three aspects of maintainability: Operability, Simplicity ([Clean Code](/blog/clean-code)), Evolvability.
 
+***
+
 ## Chapter 2. Data Models and Query Languages
 
 ### Relational Model Versus Document Model
@@ -64,6 +68,8 @@ Three most important concerns in most software systems:
 - A graph consists of **vertices** (nodes) and **edges** (arcs). Examples include social relationships graph, web pages graph and rail networks graph.
 
 - Many algorithms focus on graph, check out some of them on [LeetCode](https://leetcode.com/tag/graph/).
+
+***
 
 ## Chapter 3. Storage and Retrieval
 
@@ -169,5 +175,76 @@ Three most important concerns in most software systems:
 
 - Writing to column storage usually uses [LSM-trees](#lsm-trees). All writes first go to an in-memory store, where they are added to a sorted structure and prepared for writing to disk.
 
+***
 
-## To be continued ...  
+## Chapter 4. Encoding and Evolution
+
+### Formats for Encoding Data
+
+- The translation from in-memory representation to a byte sequence is called **encoding** (**serialization**), and the reverse is **decoding** (**parsing**, **deserialization**).
+
+#### JSON, XML, and Binary Variants
+
+- In XML and CSV, you cannot distinguish between a number and a string that consists of digits. JSON distinguishes strings and numbers, but it doesn't distinguish integers and floating-point numbers.
+
+- Binary encoding is suitable to use internally within organization, one of the implementation is using Protocol Buffers like [gRPC](https://grpc.io/about/).
+
+- JSON is less verbose than XML, but both use a lot more space compared to binary formats. This leads developments of profusion of binary encoding like [BSON](https://www.mongodb.com/basics/bson#:~:text=BSON%20stands%20for%20Binary%20Javascript,binary%20formats%2C%20like%20Protocol%20Buffers.) for JSON, [WBXML](https://www.w3.org/1999/06/NOTE-wbxml-19990624/) for XML.
+
+#### Thrift and Protocol Buffers
+
+- Thrift and Protocol Buffers are binary encoding libraries that require a schema for any data that is encoded.
+
+#### Avro
+
+- Avro is another binary encoding format with two schemas: one (Avro IDL) for human editing, one (based on JSON) more easily machine-readable.
+
+- It has **writer's schema** when encoding, and decode the data with **reader's schema**. Key idea of Avro is that writer's schema and reader's schema **don't have to be the same** but only to be compatible.
+
+### Models of Dataflow
+
+#### Dataflow Through Databases
+
+- In a database, the process that encodes the data also decodes it, just like *sending a message to your future self*. Thus **backward compatibility** is necessary.
+
+- A value in the database may be written by a newer version of the code, and read by an older version of the code that is still running. Thus **forward compatibility** is often required too.
+
+- *Data outlives code* happens when old data lives in the original encoding and never rewritten. Rewriting (migrating) is possible but expensive, most databases avoid it.
+
+#### Dataflow Through Services: REST and RPC
+
+- Most common arrangement is to have: **clients** and **servers**. The servers expose APIs over network, and the clients connect to the servers with requests to the APIs.
+
+- A server can itself be a client to another service, which is called *microservices* architecture.
+
+- **Web Service** is when HTTP is used as the underlying protocol. Two popular approaches are **REST** and **SOAP**.
+
+- REST emphasizes simple data formats, using URLs for identifying resources and using HTTP features for cache control, authentication, and content type negotiation.
+
+- SOAP is XML-based protocol that aims to be independent from HTTP and avoids using most HTTP features. The API of a SOAP web service is described using [WSDL](https://www.w3schools.com/xml/xml_wsdl.asp) (Web Services Description Language).
+
+- **RPC** (Remote Procedure Call) tries to make a request to a remote network service look the same as calling a function or method within the process.
+
+- But RPC is fundamentally flawed because network request is very different from a local function call:
+
+  - Network request is unpredictable, the request or response may be lost. 
+
+  - A local function call either returns a result, or throws an exception, or never returns. But network request may return without a result, due to a *timeout*.
+
+  - When you retry a network request, it maybe that the request is getting through but only the responses are getting lost.
+
+#### Message-Passing Dataflow
+
+- **Message Queue** is similar to RPC where a client's request is delivered to another process with low latency and similar to databases where the message is sent via an intermediary called a **message broker**.
+
+- It is usually one-way, sender doesn't expect to receive a reply to its messages. This communication pattern is **asynchronous**, the sender sends the message and forgets about it.
+
+- Popular message brokers are [RabbitMQ](https://rabbitmq.com), [Kafka](https://kafka.apache.org), etc.
+
+- Normal usage: one process sends a message to a named **queue** or **topic**, and the broker ensures the message is delivered to one or more **consumers** or **subscribers** to the queue or topic.
+
+***
+
+For this first part of the book, our main focus is data stored in a single machine, the next part will be storing them in multiple machines:
+
+Continue to the second part of the book: [Distributed Data](designing-data-intensive-applications-2).
